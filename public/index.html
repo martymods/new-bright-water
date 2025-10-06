@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEW BRIGHT WATER — Loading</title>
+  <title>New Bright Water — Loading</title>
   <style>
+    /* Load custom Faithfully font */
     @font-face {
       font-family: 'Faithfully';
       src: url('./Faithfully.ttf') format('truetype');
       font-display: swap;
     }
 
+    /* Animation */
     @keyframes load {
       0% {
         opacity: 0.08;
@@ -26,25 +28,31 @@
     html, body {
       height: 100vh;
       margin: 0;
-      background-color: #ffffff; /* white to match linked theme */
-      color: #4c3b2e; /* warm tone to match multi-faith palette */
+      background-color: #ffffff; /* matches your delcotechdivision theme */
+      color: #4c3b2e; /* warm text color to blend with gold/cream tones */
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: 'Faithfully', sans-serif;
     }
 
     h2.animate {
-      font-family: 'Faithfully', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 40px;
-      font-weight: 500;
-      letter-spacing: 1px;
+      font-family: 'Faithfully', sans-serif;
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
       animation: load 1.2s infinite ease-in-out alternate;
-      text-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Apply Faithfully font to everything for consistency */
+    * {
+      font-family: 'Faithfully', sans-serif;
     }
   </style>
 </head>
 <body>
-  <h2 class="animate">NEW BRIGHT WATER</h2>
+  <h2 class="animate">New Bright Water</h2>
 
   <script>
     // Redirect after 3 seconds
@@ -54,5 +62,3 @@
   </script>
 </body>
 </html>
-
-
