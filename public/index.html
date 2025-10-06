@@ -2,52 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEW BRIGHT WATER — Loading</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New Bright Water — Loading</title>
+
+  <!-- Display serif to match the linked site look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+  <!-- Local fallback (your file in /public) -->
+  <link rel="preload" href="./Faithfully.ttf" as="font" type="font/ttf" crossorigin>
+
   <style>
-    /* Load custom Faithfully font */
+    /* Local fallback font */
     @font-face {
-      font-family: 'Faithfully';
-      src: url('./Faithfully.ttf') format('truetype');
+      font-family: "Faithfully";
+      src: url("./Faithfully.ttf") format("truetype");
       font-display: swap;
     }
 
-    /* Animation */
-    @keyframes load {
-      0% {
-        opacity: 0.08;
-        filter: blur(5px);
-        letter-spacing: 3px;
-      }
-      100% {
-        opacity: 1;
-        filter: blur(0);
-      }
+    :root{
+      --ink:#4c3b2e;      /* warm ink to match the platform palette */
+      --bg:#ffffff;       /* white background */
     }
 
+    /* Soft pulse animation */
+    @keyframes load {
+      0% { opacity: .08; filter: blur(5px); letter-spacing: 3px; }
+      100% { opacity: 1; filter: blur(0); }
+    }
+
+    /* Global reset + font */
     html, body {
       height: 100vh;
       margin: 0;
-      background-color: #ffffff; /* matches your delcotechdivision theme */
-      color: #4c3b2e; /* warm text color to blend with gold/cream tones */
+      background: var(--bg);
+      color: var(--ink);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Faithfully', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    h2.animate {
-      font-family: 'Faithfully', sans-serif;
-      font-size: 48px;
-      font-weight: 400;
-      letter-spacing: 1.5px;
-      animation: load 1.2s infinite ease-in-out alternate;
-      text-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
-    }
-
-    /* Apply Faithfully font to everything for consistency */
+    /* Apply display serif site-wide, with your local fallback */
     * {
-      font-family: 'Faithfully', sans-serif;
+      font-family: "Fraunces", "Faithfully", serif;
+    }
+
+    h2.animate{
+      /* Fraunces variable settings for that refined display look */
+      font-variation-settings: "opsz" 72, "wght" 500;
+      font-size: clamp(28px, 6vw, 60px);
+      letter-spacing: 0.5px;
+      line-height: 1.05;
+      animation: load 1.2s infinite ease-in-out alternate;
+      text-shadow: 0 0 2px rgba(0,0,0,.06);
+      text-transform: uppercase; /* keep your current uppercase title */
+    }
+
+    /* Reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      h2.animate{ animation: none }
     }
   </style>
 </head>
@@ -56,10 +72,11 @@
 
   <script>
     // Redirect after 3 seconds
-    setTimeout(() => {
+    setTimeout(function(){
       window.location.href = "https://www.delcotechdivision.com/multifaith-giving-platform";
     }, 3000);
   </script>
 </body>
 </html>
+
 
