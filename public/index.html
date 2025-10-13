@@ -21,8 +21,9 @@
       font-display: swap;
     }
 
-    :root {
-      --ink: #4c3b2e;
+    :root{
+      --ink:#4c3b2e;      /* warm ink to match the platform palette */
+      --bg:#ffffff;       /* white background */
     }
 
     /* Soft pulse animation */
@@ -31,86 +32,49 @@
       100% { opacity: 1; filter: blur(0); }
     }
 
+    /* Global reset + font */
     html, body {
+      height: 100vh;
       margin: 0;
-      width: 100%;
-      height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    body {
-      touch-action: none;
-    }
-
-    #app {
-      position: relative;
-      width: 100%;
-      height: 100%;
+    /* Apply display serif site-wide, with your local fallback */
+    * {
       font-family: "Fraunces", "Faithfully", serif;
     }
 
-    #canvas {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .title {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: var(--ink);
-      text-transform: uppercase;
-    }
-
-    .title h2 {
+    h2.animate{
+      /* Fraunces variable settings for that refined display look */
       font-variation-settings: "opsz" 72, "wght" 500;
       font-size: clamp(28px, 6vw, 60px);
       letter-spacing: 0.5px;
       line-height: 1.05;
       animation: load 1.2s infinite ease-in-out alternate;
       text-shadow: 0 0 2px rgba(0,0,0,.06);
+      text-transform: uppercase; /* keep your current uppercase title */
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .title h2 { animation: none; }
+    /* Reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      h2.animate{ animation: none }
     }
   </style>
 </head>
 <body>
-  <div id="app">
-    <canvas id="canvas"></canvas>
-    <div class="title">
-      <h2>New Bright Water</h2>
-    </div>
-  </div>
+  <h2 class="animate">NEW BRIGHT WATER</h2>
 
   <script>
     // Redirect after 3 seconds
     setTimeout(function(){
       window.location.href = "https://www.delcotechdivision.com/multifaith-giving-platform";
     }, 3000);
-  </script>
-
-  <script type="module">
-    import LiquidBackground from 'https://cdn.jsdelivr.net/npm/threejs-components@0.0.22/build/backgrounds/liquid1.min.js';
-
-    const app = LiquidBackground(document.getElementById('canvas'));
-
-    app.loadImage('https://assets.codepen.io/33787/liquid.webp');
-    app.liquidPlane.material.metalness = 0.75;
-    app.liquidPlane.material.roughness = 0.25;
-    app.liquidPlane.uniforms.displacementScale.value = 5;
-    app.setRain(false);
   </script>
 </body>
 </html>
