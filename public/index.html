@@ -21,10 +21,6 @@
       font-display: swap;
     }
 
-    :root {
-      --ink: #4c3b2e;
-    }
-
     /* Soft pulse animation */
     @keyframes load {
       0% { opacity: .08; filter: blur(5px); letter-spacing: 3px; }
@@ -39,8 +35,13 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    :root {
+      --ink: #1b1b1b;
+    }
+
     body {
       touch-action: none;
+      background-color: #fff;
     }
 
     #app {
@@ -48,6 +49,7 @@
       width: 100%;
       height: 100%;
       font-family: "Fraunces", "Faithfully", serif;
+      background-color: #fff;
     }
 
     #canvas {
@@ -58,6 +60,8 @@
       left: 0;
       overflow: hidden;
       z-index: 0;
+      background-color: #fff;
+      filter: saturate(0) brightness(1.15);
     }
 
     .title {
@@ -78,7 +82,7 @@
       letter-spacing: 0.5px;
       line-height: 1.05;
       animation: load 1.2s infinite ease-in-out alternate;
-      text-shadow: 0 0 2px rgba(0,0,0,.06);
+      text-shadow: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -106,9 +110,12 @@
 
     const app = LiquidBackground(document.getElementById('canvas'));
 
+    app.renderer.setClearColor(0xffffff, 1);
     app.loadImage('https://assets.codepen.io/33787/liquid.webp');
-    app.liquidPlane.material.metalness = 0.75;
-    app.liquidPlane.material.roughness = 0.25;
+    app.liquidPlane.material.color.set('#ffffff');
+    app.liquidPlane.material.emissive.set('#ffffff');
+    app.liquidPlane.material.metalness = 0.45;
+    app.liquidPlane.material.roughness = 0.15;
     app.liquidPlane.uniforms.displacementScale.value = 5;
     app.setRain(false);
   </script>
