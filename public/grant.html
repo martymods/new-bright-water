@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New Bright Water — Grant Loading</title>
+
+  <!-- Display serif to match the linked site look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+  <!-- Local fallback (your file in /public) -->
+  <link rel="preload" href="./Faithfully.ttf" as="font" type="font/ttf" crossorigin>
+
+  <style>
+    /* Local fallback font */
+    @font-face {
+      font-family: "Faithfully";
+      src: url("./Faithfully.ttf") format("truetype");
+      font-display: swap;
+    }
+
+    :root{
+      --ink:#4c3b2e;
+      --bg:#ffffff;
+    }
+
+    @keyframes load {
+      0% { opacity: .08; filter: blur(5px); letter-spacing: 3px; }
+      100% { opacity: 1; filter: blur(0); }
+    }
+
+    html, body {
+      height: 100vh;
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    * {
+      font-family: "Fraunces", "Faithfully", serif;
+    }
+
+    h2.animate{
+      font-variation-settings: "opsz" 72, "wght" 500;
+      font-size: clamp(28px, 6vw, 60px);
+      letter-spacing: 0.5px;
+      line-height: 1.05;
+      animation: load 1.2s infinite ease-in-out alternate;
+      text-shadow: 0 0 2px rgba(0,0,0,.06);
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      h2.animate{ animation: none }
+    }
+  </style>
+</head>
+<body>
+  <h2 class="animate">NEW BRIGHT WATER GRANT</h2>
+
+  <script>
+    // Redirect after 2 seconds
+    setTimeout(function(){
+      window.location.href = "https://www.delcotechdivision.com/delocoTech/new-bright-water-grant.html";
+    }, 2000);
+  </script>
+</body>
+</html>
